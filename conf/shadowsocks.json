@@ -1,0 +1,19 @@
+{
+    "server":"0.0.0.0",
+    "port_password":{
+        "8443":"shadowsocks",
+        "8444":"shadowsocks",
+        "8445":"shadowsocks",
+        "8446":"shadowsocks",
+        "8447":"shadowsocks",
+        "8448":"shadowsocks",
+        "8449":"shadowsocks",
+        "8450":"shadowsocks",
+        "8451":"shadowsocks"
+    },
+    "local_address":"127.0.0.1",
+    "local_port":1080,
+    "timeout":300,
+    "method":"encryption",
+    "fast_open":true
+}
