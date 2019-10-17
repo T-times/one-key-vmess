@@ -155,9 +155,9 @@ v2ray_setup(){
 
 main(){
 	bbr_setup
+	base_setup
 	var
 	swap_setup
-	base_setup
 	shadowsocks_setup
 	optimize
 	nginx_setup
