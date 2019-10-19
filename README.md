@@ -11,12 +11,12 @@
 
 > CentOS
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/okv-centos.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/okv-centos.sh)"
 ```
 
 > Debian
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/okv-debian.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/okv-debian.sh)"
 ```
 
 根据提示进行交互安装即可。
