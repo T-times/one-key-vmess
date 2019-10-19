@@ -31,7 +31,7 @@ swap_setup(){
 base_setup(){
 	add-apt-repository ppa:certbot/certbot
 	apt-get -y update 
-	apt -y install vim wget unzip zip python-certbot-nginx ntpdate 
+	apt -y install vim wget unzip zip python-certbot-nginx ntpdate libsodium-dev libsodium23 php-libsodium python-libnacl python-nacl python-pysodium python3-libnacl python3-nacl python3-pysodium
 	if [[ $? -eq 0 ]]; then
 		apt -y install python3-pip
 	else
@@ -69,8 +69,9 @@ net.ipv4.tcp_mem = 25600 51200 102400
 net.ipv4.tcp_rmem = 4096 87380 67108864
 net.ipv4.tcp_wmem = 4096 65536 67108864
 net.ipv4.tcp_mtu_probing = 1
-net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf
+net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.d/local.conf
 	sysctl -p
+	sysctl --system
 
 	if [[ $? -eq 0 ]]; then
 		sysctl net.ipv4.tcp_available_congestion_control | grep bbr > /dev/null
@@ -80,7 +81,7 @@ net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf
 	fi
 	
 	if [[ $? -eq 0 ]]; then
-		ulimit -s 51200
+		ulimit -n 51200
 	else
 		echo "Network optimize failed..."
 		exit 1
