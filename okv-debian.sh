@@ -107,7 +107,7 @@ v2ray_setup(){
 	if [[ $? -eq 0 ]]; then
 		systemctl stop nginx
 	else
-		echo "python2-certbot-nginx install failed..."
+		echo "python-certbot-nginx install failed..."
 		exit 1
 	fi
 
@@ -117,7 +117,7 @@ v2ray_setup(){
 		cid=$(cat /etc/v2ray/config.json | grep id | awk -F '"' '{print $4}')
 		cp /etc/v2ray/config.json /etc/v2ray/config.json.bak
 		cp -arf config.json /etc/v2ray/config.json
-		sed -i "s/cid/$id/g" /etc/v2ray/config.json
+		sed -i "s/cid/$cid/g" /etc/v2ray/config.json
 		sed -i "s/12345/$vmessport/g" /etc/v2ray/config.json
 		systemctl enable v2ray
 		systemctl start v2ray
@@ -142,7 +142,7 @@ v2ray_setup(){
 	echo "Please setup the timezone of your clients: "
 	if [[ $? -eq 0 ]]; then
 		tzselect
-		cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+		cp -arf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 	else
 		exit 1
 	fi
