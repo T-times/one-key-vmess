@@ -15,10 +15,10 @@ var(){
 	read -p "Input your password of shadowsocks: " sspass
 	read -p "Input the port of v2ray: " vmessport
 
-	wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/shadowsocks.json
-	wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/config.json
-	wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/vmess.conf
-	wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/nginx.repo 
+	wget --no-check-certificate https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/shadowsocks.json
+	wget --no-check-certificate https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/config.json
+	wget --no-check-certificate https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/vmess.conf
+	wget --no-check-certificate https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/nginx.repo 
 }
 
 swap_setup(){
@@ -28,7 +28,7 @@ swap_setup(){
 
 base_setup(){
 	yum -y install epel-release 
-	yum -y install axel wget unzip zip ntpdate libsodium
+	yum -y install vim net-tools lsof axel wget unzip zip ntpdate libsodium
 	if [[ $? -eq 0 ]]; then
 		yum -y install python3-pip
 	else
