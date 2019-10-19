@@ -20,7 +20,7 @@ var(){
 	wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/shadowsocks.json
 	wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/config.json
 	wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/vmess.conf
-	wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/nginx.repo 
+	#wget https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/conf/nginx.repo 
 }
 
 swap_setup(){
@@ -29,9 +29,9 @@ swap_setup(){
 }
 
 base_setup(){
-	add-apt-repository ppa:certbot/certbot
-	apt-get -y update 
-	apt -y install vim wget unzip zip python-certbot-nginx ntpdate libsodium-dev libsodium23 php-libsodium python-libnacl python-nacl python-pysodium python3-libnacl python3-nacl python3-pysodium
+	#add-apt-repository ppa:certbot/certbot
+	#apt-get -y update 
+	apt -y install vim curl wget unzip zip python-certbot-nginx ntpdate libsodium-dev libsodium23 python-libnacl python-nacl python-pysodium python3-libnacl python3-nacl python3-pysodium
 	if [[ $? -eq 0 ]]; then
 		apt -y install python3-pip
 	else
@@ -43,8 +43,8 @@ shadowsocks_setup(){
 	echo "Installing shadowsocks..."
 	pip3 install https://github.com/shadowsocks/shadowsocks/archive/master.zip
 	cp -arf shadowsocks.json /etc/shadowsocks.json
-	sed -i 's/encryption/$method/g' /etc/shadowsocks.json
-	sed -i 's/shadowsocks/$sspass/g' /etc/shadowsocks.json
+	sed -i "s/encryption/$method/g" /etc/shadowsocks.json
+	sed -i "s/shadowsocks/$sspass/g" /etc/shadowsocks.json
 	ssserver -c /etc/shadowsocks.json -d start
 }
 
@@ -102,7 +102,7 @@ nginx_setup(){
 v2ray_setup(){
 	echo "Installing v2ray..."
 	wget https://install.direct/go.sh
-	apt -y install python2-certbot-nginx
+	apt -y install python-certbot-nginx
 
 	if [[ $? -eq 0 ]]; then
 		systemctl stop nginx
@@ -117,8 +117,8 @@ v2ray_setup(){
 		cid=$(cat /etc/v2ray/config.json | grep id | awk -F '"' '{print $4}')
 		cp /etc/v2ray/config.json /etc/v2ray/config.json.bak
 		cp -arf config.json /etc/v2ray/config.json
-		sed -i 's/cid/$id/g' /etc/v2ray/config.json
-		sed -i 's/12345/$vmessport/g' /etc/v2ray/config.json
+		sed -i "s/cid/$id/g" /etc/v2ray/config.json
+		sed -i "s/12345/$vmessport/g" /etc/v2ray/config.json
 		systemctl enable v2ray
 		systemctl start v2ray
 		ntpdate time2.aliyun.com
@@ -131,8 +131,8 @@ v2ray_setup(){
 
 	if [[ $? -eq 0 ]]; then
 		cp vmess.conf /etc/nginx/conf.d/vmess.conf
-		sed -i 's/www.example.com/$domain/g' /etc/nginx/conf.d/vmess.conf
-		sed -i 's/12345/$vmessport/g' /etc/nginx/conf.d/vmess.conf
+		sed -i "s/www.example.com/$domain/g" /etc/nginx/conf.d/vmess.conf
+		sed -i "s/12345/$vmessport/g" /etc/nginx/conf.d/vmess.conf
 		systemctl restart nginx
 	else
 		echo "Certificate you apply failed..."
