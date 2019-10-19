@@ -27,7 +27,8 @@ swap_setup(){
 }
 
 base_setup(){
-	yum -y install epel-release axel wget unzip zip ntpdate libsodium
+	yum -y install epel-release 
+	yum -y install axel wget unzip zip ntpdate libsodium
 	if [[ $? -eq 0 ]]; then
 		yum -y install python3-pip
 	else
