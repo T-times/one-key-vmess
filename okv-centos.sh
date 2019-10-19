@@ -93,7 +93,7 @@ net.ipv4.tcp_congestion_control = hybla" >> /etc/sysctl.conf
 
 nginx_setup(){
 	echo "Installing nginx..."
-	yum -y install nginx nginx-module-perl
+	yum -y install nginx 
 	systemctl enable nginx
 	systemctl start nginx
 }
