@@ -39,8 +39,8 @@ shadowsocks_setup(){
 	echo "Installing shadowsocks..."
 	pip3 install https://github.com/shadowsocks/shadowsocks/archive/master.zip
 	cp -arf shadowsocks.json /etc/shadowsocks.json
-	sed -i 's/encryption/$method/g' /etc/shadowsocks.json
-	sed -i 's/shadowsocks/$sspass/g' /etc/shadowsocks.json
+	sed -i "s/encryption/$method/g" /etc/shadowsocks.json
+	sed -i "s/shadowsocks/$sspass/g" /etc/shadowsocks.json
 	ssserver -c /etc/shadowsocks.json -d start
 }
 
@@ -115,8 +115,8 @@ v2ray_setup(){
 		cid=$(cat /etc/v2ray/config.json | grep id | awk -F '"' '{print $4}')
 		cp /etc/v2ray/config.json /etc/v2ray/config.json.bak
 		cp -arf config.json /etc/v2ray/config.json
-		sed -i 's/cid/$id/g' /etc/v2ray/config.json
-		sed -i 's/12345/$vmessport/g' /etc/v2ray/config.json
+		sed -i "s/cid/$id/g" /etc/v2ray/config.json
+		sed -i "s/12345/$vmessport/g" /etc/v2ray/config.json
 		systemctl enable v2ray
 		systemctl start v2ray
 		ntpdate time2.aliyun.com
@@ -129,8 +129,8 @@ v2ray_setup(){
 
 	if [[ $? -eq 0 ]]; then
 		cp vmess.conf /etc/nginx/conf.d/vmess.conf
-		sed -i 's/www.example.com/$domain/g' /etc/nginx/conf.d/vmess.conf
-		sed -i 's/12345/$vmessport/g' /etc/nginx/conf.d/vmess.conf
+		sed -i "s/www.example.com/$domain/g" /etc/nginx/conf.d/vmess.conf
+		sed -i "s/12345/$vmessport/g" /etc/nginx/conf.d/vmess.conf
 		systemctl restart nginx
 	else
 		echo "Certificate you apply failed..."
