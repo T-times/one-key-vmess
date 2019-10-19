@@ -161,8 +161,8 @@ main(){
 	base_setup
 	var
 	swap_setup
-	shadowsocks_setup
 	optimize
+	shadowsocks_setup
 	nginx_setup
 	v2ray_setup
 }
