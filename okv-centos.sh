@@ -5,7 +5,7 @@ bbr_setup(){
 	if [[ $? -eq 0 ]]; then
 		echo "You have set bbr speed."
 	else
-		sh -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/myshell/master/centos-bbr.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/myshell/master/centos-bbr.sh)"
 	fi
 }
 
@@ -23,7 +23,7 @@ var(){
 
 swap_setup(){
 	echo "Setup swap partition: "
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/myshell/master/swap_setup.sh)"
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/myshell/master/swap_setup.sh)"
 }
 
 base_setup(){

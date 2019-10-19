@@ -25,7 +25,7 @@ var(){
 
 swap_setup(){
 	echo "Setup swap partition: "
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/myshell/master/swap_setup.sh)"
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/myshell/master/swap_setup.sh)"
 }
 
 base_setup(){
