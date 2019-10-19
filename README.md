@@ -9,8 +9,14 @@
 
 > 将服务器公网`IP`地址解析到准备的域名，然后利用`root`用户登录服务器
 
+> CentOS
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/vmess.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/okv-centos.sh)"
+```
+
+> Debian
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/okv-debian.sh)"
 ```
 
 根据提示进行交互安装即可。
