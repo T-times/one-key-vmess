@@ -14,7 +14,7 @@
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/okv-centos.sh)"
 ```
 
-> Debian
+> Debian/Ubuntu
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/athlonreg/one-key-vmess/master/okv-debian.sh)"
 ```
